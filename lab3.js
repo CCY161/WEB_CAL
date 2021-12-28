@@ -1,54 +1,85 @@
 let data = document.getElementById("data");
 let result = document.getElementById("result");
+let cur_data;
 let op;
 let keep = false;
 
 function conca(n){
-    if(data.innerText==0)
+    if(data.innerText==0 || keep){
         data.innerText=n;
-    else
+        keep =false;
+    }
+    else{
         data.innerText+=n;
+    }
 }
 
 function ans(){
-    let a = Number(result.innerText);
+    let a = Number(cur_data);
     let b = Number(data.innerText);
-    console.log(op);
+    // let func;
+
+    // if(op=="add" || op=="sub"){
+    //     func="http://192.168.1.164:3000/" + op + "?&a="+a+"&b="+b;
+    //     fetch(func)
+    //     .then(function(response) {
+    //         return response.json();
+    //     })
+    //     .then(function(myJson) {
+    //         data.innerText = myJson.result;
+    //         console.log(data.innerText);
+    //     });
+    // }
+
+    // else if(op=="mul"){
+    //     func = "http://192.168.1.164:3000/multiply";
+    //     fetch(func, {
+    //         body: JSON.stringify({a:a, b:b}),
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         method: 'POST',
+    //     })
+    //     .then(function(response) {
+    //         return response.json();
+    //     })
+    //     .then(function(myJson) {
+    //         data.innerText = myJson.result;
+    //         console.log(data.innerText);
+    //     });
+    // }
     if(op=="add"){
-        result.innerText=a+b;        
+        data.innerText =a+b;
     }
     else if(op=="sub"){
-        result.innerText=a-b;
+        data.innerText =a-b;
     }
     else if(op=="mul"){
-        result.innerText=a*b;
+        data.innerText =a*b;
     }
     else if(op=="div"){
-        result.innerText=a/b;
+        data.innerText=a/b;
     }
     else if(op=="mod"){
-        result.innerText=a%b;
+        data.innerText=a%b;
     }
-    console.log(result.innerText);
+    console.log(op);
+    console.log(data.innerText);
+    cur_data = data.innerText;
+    keep = true;
     //data.innerText = 0;
 }
 
 function update(n){
-    if(keep){
-        ans();
-        op = n;
-    }
-    else{
-        result.innerText = data.innerText;
-        data.innerText = 0;
-        op = n;
-        keep = true;
-    }
+    op = n;
+    cur_data = data.innerText;
+    //data.innerText = 0;
+    keep = true;
 }
 
 function output(){
     ans();
-    data.innerText = 0;
+    //data.innerText = 0;
 }
 
 function sign(){
