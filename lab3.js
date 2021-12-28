@@ -11,9 +11,6 @@ function conca(n){
     }
     else{
         data.innerText+=n;
-        if(data.innerText=="520"){
-            result.innerText="小佑愛妳";
-        }
     }
 }
 
