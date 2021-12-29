@@ -63,6 +63,8 @@ function ans(){
     else if(op=="mod"){
         data.innerText=a%b;
     }
+    console.log(a);
+    console.log(b);
     console.log(op);
     console.log(data.innerText);
     cur_data = data.innerText;
@@ -134,6 +136,9 @@ for(let i = 0  ; i <=18 ; i++){
     }
     else if(i == 15){
         y.addEventListener("click", function(){sign()});
+    }
+    else if(i == 16){
+        y.addEventListener("click", function(){conca(".")});
     }
     else if(i == 17){
         y.addEventListener("click", function(){cls()});
